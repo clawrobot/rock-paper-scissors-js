@@ -73,6 +73,7 @@ rockButton.addEventListener("click", () => {
     let currWinner = document.querySelector("#winnerOfRound");
     let humanText = document.querySelector("#humanScore");
     let computerText = document.querySelector("#computerScore");
+    let fin = document.querySelector("#finalWinner");
     switch (result){
         case 0:
             cS++;
@@ -88,11 +89,66 @@ rockButton.addEventListener("click", () => {
             humanText.textContent = `You have won this many: ${hS}`;
             break;
     }
-
+    if (cS === 5){
+        fin.textContent = "Computer won with 5";
+    }
+    if (hS === 5){
+        fin.textContent = "You won with 5";
+    }
 })
 paperButton.addEventListener("click", () => {
-    const result = playRound("paper", getComputerChoice);
+    let result = playRound("paper", getComputerChoice());
+    let currWinner = document.querySelector("#winnerOfRound");
+    let humanText = document.querySelector("#humanScore");
+    let computerText = document.querySelector("#computerScore");
+    let fin = document.querySelector("#finalWinner");
+    switch (result){
+        case 0:
+            cS++;
+            currWinner.textContent = "Your paper lost to scissors";
+            computerText.textContent = `Computer has won this many: ${cS}`;
+            break;
+        case 1:
+            currWinner.textContent = "Your paper tied";
+            break;
+        case 2:
+            hS++;
+            currWinner.textContent = "Your paper beat rock";
+            humanText.textContent = `You have won this many: ${hS}`;
+            break;
+    }
+    if (cS === 5){
+        fin.textContent = "Computer won with 5";
+    }
+    if (hS === 5){
+        fin.textContent = "You won with 5";
+    }
 })
 scissorsButton.addEventListener("click", () => {
-    const result = playRound("scissors", getComputerChoice);
+    let result = playRound("scissors", getComputerChoice());
+    let currWinner = document.querySelector("#winnerOfRound");
+    let humanText = document.querySelector("#humanScore");
+    let computerText = document.querySelector("#computerScore");
+    let fin = document.querySelector("#finalWinner");
+    switch (result){
+        case 0:
+            cS++;
+            currWinner.textContent = "Your scissors lost to rock";
+            computerText.textContent = `Computer has won this many: ${cS}`;
+            break;
+        case 1:
+            currWinner.textContent = "Your scissors tied";
+            break;
+        case 2:
+            hS++;
+            currWinner.textContent = "Your scissors beat paper";
+            humanText.textContent = `You have won this many: ${hS}`;
+            break;
+    }
+    if (cS === 5){
+        fin.textContent = "Computer won with 5";
+    }
+    if (hS === 5){
+        fin.textContent = "You won with 5";
+    }
 })
